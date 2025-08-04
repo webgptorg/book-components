@@ -1,0 +1,187 @@
+/* Bookmark */
+.bookmark {
+    /*/
+    outline: 1px solid red !important;
+    /**/
+
+    position: absolute;
+    top: -15px;
+    right: 60px;
+    width: 80px;
+    height: 260px;
+    z-index: 20;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px 8px 0 0;
+    overflow: visible;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.bookmark::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+    clip-path: inherit;
+}
+
+.bookmarkContent {
+    /*/
+    outline: 1px solid red !important;
+    /**/
+
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 8px 35px 8px;
+}
+
+.bookmarkButtons {
+    /*/
+    outline: 1px solid red !important;
+    /**/
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.closeButton,
+.saveButton,
+.exportButton,
+.uploadButton {
+    /*/
+    outline: 1px solid red !important;
+    /**/
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(56 56 56 / 0.2) !important;
+    border: 1px solid rgba(124 124 124 / 0.18) !important;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.closeButton:hover,
+.saveButton:hover:not(:disabled),
+.exportButton:hover,
+.uploadButton:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.saveButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1111px) {
+    .bookmark {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        width: 60px;
+        height: 120px;
+        z-index: 50 !important;
+    }
+
+    .bookmarkContent {
+        padding: 8px 4px 25px 4px;
+    }
+
+    .bookmarkButtons {
+        gap: 6px;
+        margin-top: 2px;
+    }
+
+    .closeButton,
+    .saveButton,
+    .exportButton,
+    .uploadButton {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bookmark {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        width: 55px;
+        height: 110px;
+        z-index: 50 !important;
+    }
+
+    .bookmarkContent {
+        padding: 6px 2px 20px 2px;
+    }
+
+    .bookmarkButtons {
+        gap: 4px;
+    }
+
+    .closeButton,
+    .saveButton,
+    .exportButton,
+    .uploadButton {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bookmark {
+        position: fixed !important;
+        width: 50px;
+        height: 100px;
+        top: 5px !important;
+        right: 5px !important;
+        z-index: 50 !important;
+    }
+
+    .bookmarkContent {
+        padding: 4px 2px 15px 2px;
+    }
+
+    .bookmarkButtons {
+        gap: 3px;
+    }
+
+    .closeButton,
+    .saveButton,
+    .exportButton,
+    .uploadButton {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+}
