@@ -4,7 +4,7 @@ import {
     clearAgentModelRequirementsWithCommitmentsCache,
     createAgentModelRequirementsWithCommitmentsCached,
     getAgentModelRequirementsWithCommitmentsCacheSize,
-    invalidateAgentModelRequirementsWithCommitmentsCache,
+    invalidateAgentModelRequirementsWithCommitmentsCache
 } from '../../../book/commitments/_misc/createAgentModelRequirementsWithCommitments';
 import { DEFAULT_MODEL_ID } from '../../../constants/models';
 import { AgentModelRequirements } from './AgentModelRequirements';

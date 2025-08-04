@@ -1,7 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { Package } from 'lucide-react';
+import dynamic from 'next/dynamic';
 
 // Dynamically import components to avoid SSR issues
 const TextareaWithCounter = dynamic(() => import('@/components/textarea-with-counter/TextareaWithCounter'), { ssr: false });

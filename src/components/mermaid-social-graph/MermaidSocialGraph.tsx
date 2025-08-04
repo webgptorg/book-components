@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
+import { useEffect, useRef, useState } from 'react';
 
 interface Node {
   id: string;

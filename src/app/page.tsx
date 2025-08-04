@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { getAllComponents, getComponentsByCategory } from '@/lib/components';
-import { Search, Package, ExternalLink, Tag, User } from 'lucide-react';
+import { ExternalLink, Package, Search, Tag, User } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   const components = getAllComponents();
