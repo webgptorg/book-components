@@ -1,4 +1,4 @@
-import { AgentBookEditor } from '@/components/book-editor';
+import { AgentBookEditor } from '@/components/book-components';
 
 export default function AgentBookEditor() {
 
