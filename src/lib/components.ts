@@ -1,4 +1,5 @@
-import { COMPONENTS_DATA } from './components-data';
+import fs from 'fs';
+import path from 'path';
 
 export interface ComponentMetadata {
   id: string;
@@ -25,7 +26,32 @@ export interface ComponentMetadata {
 }
 
 export function getAllComponents(): ComponentMetadata[] {
-  return COMPONENTS_DATA.sort((a, b) => a.name.localeCompare(b.name));
+  const componentsDir = path.join(process.cwd(), 'src/components');
+  
+  if (!fs.existsSync(componentsDir)) {
+    return [];
+  }
+
+  const componentFolders = fs.readdirSync(componentsDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+  const components: ComponentMetadata[] = [];
+
+  for (const folder of componentFolders) {
+    const componentJsonPath = path.join(componentsDir, folder, 'component.json');
+    
+    if (fs.existsSync(componentJsonPath)) {
+      try {
+        const componentData = JSON.parse(fs.readFileSync(componentJsonPath, 'utf-8'));
+        components.push(componentData);
+      } catch (error) {
+        console.error(`Error loading component metadata for ${folder}:`, error);
+      }
+    }
+  }
+
+  return components.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function getComponentById(id: string): ComponentMetadata | null {

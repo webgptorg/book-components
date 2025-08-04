@@ -49,7 +49,7 @@ export default function RootLayout({
         <link rel="icon" href="https://www.ptbk.io/design" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}
       >
         {children}
       </body>
