@@ -6,6 +6,11 @@
             "command": "npm run dev",
             "focus": false
         },
+               {
+            "name": "🧪 Test types",
+            "command": "npx tsc",
+            "execute": false
+        },
         {
             "name": "🧪 Lint test",
             "command": "npm run lint",
