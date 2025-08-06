@@ -1,0 +1,129 @@
+{
+  "id": "agent-book-editor",
+  "name": "Agent Book Editor",
+  "description": "A beautiful book-style editor component for creating and editing AI agents with syntax highlighting, auto-save, and file upload capabilities.",
+  "category": "Editors",
+  "tags": ["editor", "ai", "agent", "book", "modal", "form", "upload", "syntax-highlighting"],
+  "author": "Promptbook Team",
+  "version": "1.0.0",
+  "repository": "https://github.com/webgptorg/promptbook-components",
+  "dependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "props": {
+    "mode": {
+      "type": "'create' | 'edit'",
+      "description": "Editor mode - create for new agents, edit for existing ones",
+      "required": true
+    },
+    "onSubmit": {
+      "type": "(agentData: { agentSource: string_agent_source }) => Promise<void> | void",
+      "description": "Callback when form is submitted with agent data",
+      "required": true
+    },
+    "onClose": {
+      "type": "() => void",
+      "description": "Callback when editor is closed",
+      "required": true
+    },
+    "abTestText": {
+      "type": "{ singular: string; singularCapitalized: string; createCapitalized: string }",
+      "description": "Text labels for the interface customization",
+      "required": true
+    },
+    "backgroundImage": {
+      "type": "string",
+      "description": "URL for the bookmark background image",
+      "required": true
+    },
+    "initialAgentSource": {
+      "type": "string_agent_source",
+      "description": "Initial content for edit mode",
+      "required": false
+    },
+    "prefillAgentSource": {
+      "type": "string_agent_source",
+      "description": "Prefill content for create mode",
+      "required": false
+    },
+    "onExport": {
+      "type": "() => void",
+      "description": "Callback when export button is clicked (edit mode only)",
+      "required": false
+    },
+    "className": {
+      "type": "string",
+      "description": "Additional CSS class for the component",
+      "required": false
+    },
+    "bookContainerClassName": {
+      "type": "string",
+      "description": "CSS class for book container",
+      "required": false
+    },
+    "bookmarkClassName": {
+      "type": "string",
+      "description": "CSS class for bookmark",
+      "required": false
+    },
+    "bookPagesClassName": {
+      "type": "string",
+      "description": "CSS class for book pages",
+      "required": false
+    },
+    "leftPageClassName": {
+      "type": "string",
+      "description": "CSS class for left page",
+      "required": false
+    },
+    "rightPageClassName": {
+      "type": "string",
+      "description": "CSS class for right page",
+      "required": false
+    }
+  },
+  "types": {
+    "string_agent_source": {
+      "description": "Branded type for agent source strings containing structured agent data",
+      "format": "Agent Name\\n\\nPERSONA Description\\nKNOWLEDGE Sources\\nSTYLE Guidelines\\nRULE Behavioral rules"
+    }
+  },
+  "features": [
+    "Book-style interface with beautiful design",
+    "Syntax highlighting for commitment keywords (PERSONA, KNOWLEDGE, etc.)",
+    "Auto-save functionality in edit mode",
+    "Drag & drop file upload for knowledge sources",
+    "Responsive design for desktop and mobile",
+    "TypeScript support with proper types",
+    "Modal-based interface",
+    "Export functionality for agents",
+    "Customizable styling with CSS classes",
+    "Support for both create and edit modes"
+  ],
+  "examples": [
+    {
+      "title": "Create Mode",
+      "code": "<AgentBookEditor\n  mode=\"create\"\n  onSubmit={handleCreateSubmit}\n  onClose={() => setIsOpen(false)}\n  abTestText={{\n    singular: \"agent\",\n    singularCapitalized: \"Agent\",\n    createCapitalized: \"Create Agent\"\n  }}\n  backgroundImage=\"https://example.com/background.jpg\"\n/>"
+    },
+    {
+      "title": "Edit Mode",
+      "code": "<AgentBookEditor\n  mode=\"edit\"\n  onSubmit={handleEditSubmit}\n  onClose={() => setIsOpen(false)}\n  onExport={handleExport}\n  abTestText={{\n    singular: \"agent\",\n    singularCapitalized: \"Agent\",\n    createCapitalized: \"Create Agent\"\n  }}\n  backgroundImage=\"https://example.com/background.jpg\"\n  initialAgentSource={existingAgent}\n/>"
+    },
+    {
+      "title": "With Custom Styling",
+      "code": "<AgentBookEditor\n  mode=\"create\"\n  onSubmit={handleSubmit}\n  onClose={() => setIsOpen(false)}\n  abTestText={textLabels}\n  backgroundImage={backgroundUrl}\n  className=\"custom-editor\"\n  bookContainerClassName=\"custom-book\"\n/>"
+    }
+  ],
+  "commitmentTypes": [
+    "PERSONA - Agent personality and role description",
+    "KNOWLEDGE - Knowledge sources and content references",
+    "STYLE - Writing style guidelines and tone",
+    "RULE/RULES - Behavioral rules and constraints",
+    "SAMPLE/EXAMPLE - Example interactions and responses",
+    "FORMAT - Output format specifications",
+    "MODEL - Model-specific instructions",
+    "ACTION - Available actions and capabilities",
+    "PROFILE_IMAGE - Agent avatar image URL",
+    "NOTE - Additional notes and comments"
+  ]
+}
