@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { getAllCommitmentTypes } from '../../../book/commitments';
-import { createCommitmentTypeRegex } from '../../../book/commitments/_misc/createCommitmentRegex';
-import styles from './AgentBookEditor.module.css';
+import { getAllCommitmentTypes } from '../../book/commitments';
+import { createCommitmentTypeRegex } from '../../book/commitments/createCommitmentRegex';
+import styles from './HighlightedText.module.css';
 
 interface HighlightedTextProps {
     text: string;

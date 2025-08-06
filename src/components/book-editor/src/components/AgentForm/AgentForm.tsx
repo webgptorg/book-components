@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Promisable } from 'type-fest';
-import { string_agent_source, validateAgentSource } from '../../../book-agent-source/string_agent_source';
-import { classNames } from '../../../utils/classNames';
-import { HighlightedText } from './HighlightedText';
+import { string_agent_source, validateAgentSource } from '../../types/string_agent_source';
+import { classNames } from '../../utils/classNames';
+import { HighlightedText } from '../HighlightedText/HighlightedText';
 
 interface AgentFormProps {
     description: string;

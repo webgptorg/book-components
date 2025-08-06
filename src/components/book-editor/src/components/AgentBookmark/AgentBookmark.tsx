@@ -1,7 +1,8 @@
-import { CancelIcon } from '../../../components/icons/CancelIcon/CancelIcon';
-import { SendIcon } from '../../../components/icons/SendIcon/SendIcon';
-import { UploadIcon } from '../../../components/icons/UploadIcon/UploadIcon';
-import { classNames } from '../../../utils/classNames';
+import React from 'react';
+import { CancelIcon } from '../icons/CancelIcon';
+import { SendIcon } from '../icons/SendIcon';
+import { UploadIcon } from '../icons/UploadIcon';
+import { classNames } from '../../utils/classNames';
 import styles from './AgentBookmark.module.css';
 
 interface AgentBookmarkProps {

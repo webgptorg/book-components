@@ -1,9 +1,5 @@
 /* Bookmark */
 .bookmark {
-    /*/
-    outline: 1px solid red !important;
-    /**/
-
     position: absolute;
     top: -15px;
     right: 60px;
@@ -31,10 +27,6 @@
 }
 
 .bookmarkContent {
-    /*/
-    outline: 1px solid red !important;
-    /**/
-
     position: relative;
     z-index: 1;
     height: 100%;
@@ -46,12 +38,7 @@
 }
 
 .bookmarkButtons {
-    /*/
-    outline: 1px solid red !important;
-    /**/
-
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,10 +51,6 @@
 .saveButton,
 .exportButton,
 .uploadButton {
-    /*/
-    outline: 1px solid red !important;
-    /**/
-
     width: 50px;
     height: 50px;
     border-radius: 50%;

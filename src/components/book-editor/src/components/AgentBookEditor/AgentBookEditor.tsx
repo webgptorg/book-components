@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { INITIAL_AGENT_SOURCE } from '../../../../config';
-import { string_agent_source, validateAgentSource } from '../../../book-agent-source/string_agent_source';
-import { UploadWallpaperResponse } from '../../../pages/api/upload-knowledge';
-import { classNames } from '../../../utils/classNames';
-import { spaceTrim } from '../../../utils/organization/spaceTrim';
-import { Modal } from '../Modal/00-Modal';
+import { INITIAL_AGENT_SOURCE, UploadWallpaperResponse } from '../../config';
+import { string_agent_source, validateAgentSource } from '../../types/string_agent_source';
+import { classNames } from '../../utils/classNames';
+import { spaceTrim } from '../../utils/spaceTrim';
+import { Modal } from '../Modal/Modal';
+import { AgentBookmark } from '../AgentBookmark/AgentBookmark';
+import { AgentForm } from '../AgentForm/AgentForm';
+import { AgentInstructions } from '../AgentInstructions/AgentInstructions';
 import styles from './AgentBookEditor.module.css';
-import { AgentBookmark } from './AgentBookmark';
-import { AgentForm } from './AgentForm';
-import { AgentInstructions } from './AgentInstructions';
 
 export interface AgentBookEditorProps {
     mode: 'create' | 'edit';
@@ -49,8 +48,7 @@ export function AgentBookEditor({
     leftPageClassName,
     rightPageClassName,
     prefillAgentSource = validateAgentSource(''),
-}: // <- Prompt: Do not allow to pass multiple class names into the component, allow to pass only one `className` which will be applied to the root element and all other elements will use the styles defined in the component's CSS module, apply this rule to all components in the project
-AgentBookEditorProps) {
+}: AgentBookEditorProps) {
     const [agentSource, setAgentSource] = useState<string_agent_source>(
         validateAgentSource(prefillAgentSource || initialAgentSource),
     );
@@ -330,7 +328,6 @@ AgentBookEditorProps) {
             filesToProcess.push(file);
         }
 
-
         // Then upload files and update with URLs
         let processedFileIndex = 0;
         for (const file of filesToProcess) {
@@ -338,7 +335,7 @@ AgentBookEditorProps) {
                 const formData = new FormData();
                 formData.append('knowledgeSource', file);
 
-                // Note: [🛹] Not using `promptbookStudioFetch`
+                // Note: This would need to be implemented by the consumer
                 const response = await fetch('/api/upload-knowledge', {
                     method: 'POST',
                     body: formData,
@@ -366,7 +363,6 @@ AgentBookEditorProps) {
                 });
             } catch (error) {
                 console.error('Failed to upload knowledge source:', error);
-
                 throw error;
             }
             processedFileIndex++;
