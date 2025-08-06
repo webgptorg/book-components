@@ -1,9 +1,9 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getComponentById } from '@/lib/components';
-import { ArrowLeft, ExternalLink, Tag, User, Download, Code, Eye, Settings } from 'lucide-react';
 import ComponentPreview from '@/components/ComponentPreview';
 import CopyButton from '@/components/CopyButton';
+import { getComponentById } from '@/lib/components';
+import { ArrowLeft, Code, Download, ExternalLink, Eye, Settings, Tag, User } from 'lucide-react';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 interface ComponentPageProps {
   params: Promise<{
