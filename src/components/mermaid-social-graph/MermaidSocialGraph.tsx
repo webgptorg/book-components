@@ -1,7 +1,7 @@
 'use client';
 
 import mermaid from 'mermaid';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface Node {
   id: string;
@@ -56,6 +56,41 @@ export default function MermaidSocialGraph({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+
+    const generateMermaidSyntax = useCallback((nodes: Node[], edges: Edge[], direction: string): string => {
+    let syntax = `graph ${direction}\n`;
+    
+    // Add node definitions with styling based on type
+    nodes.forEach(node => {
+      const nodeStyle = getNodeStyle(node.type);
+      syntax += `    ${node.id}["${node.label}"]${nodeStyle}\n`;
+    });
+    
+    // Add edges
+    edges.forEach(edge => {
+      const edgeStyle = getEdgeStyle(edge.type);
+      const label = edge.label ? `|${edge.label}|` : '';
+      syntax += `    ${edge.from} ${edgeStyle}${label} ${edge.to}\n`;
+    });
+    
+    // Add styling classes
+    syntax += `
+    classDef person fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef organization fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef group fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    `;
+    
+    // Apply classes to nodes
+    nodes.forEach(node => {
+      if (node.type) {
+        syntax += `class ${node.id} ${node.type}\n`;
+      }
+    });
+    
+    return syntax;
+  }, []);
+
+
   useEffect(() => {
     const initializeMermaid = async () => {
       try {
@@ -96,40 +131,9 @@ export default function MermaidSocialGraph({
     };
 
     initializeMermaid();
-  }, [nodes, edges, theme, direction]);
+  }, [generateMermaidSyntax,nodes, edges, theme, direction]);
 
-  const generateMermaidSyntax = (nodes: Node[], edges: Edge[], direction: string): string => {
-    let syntax = `graph ${direction}\n`;
-    
-    // Add node definitions with styling based on type
-    nodes.forEach(node => {
-      const nodeStyle = getNodeStyle(node.type);
-      syntax += `    ${node.id}["${node.label}"]${nodeStyle}\n`;
-    });
-    
-    // Add edges
-    edges.forEach(edge => {
-      const edgeStyle = getEdgeStyle(edge.type);
-      const label = edge.label ? `|${edge.label}|` : '';
-      syntax += `    ${edge.from} ${edgeStyle}${label} ${edge.to}\n`;
-    });
-    
-    // Add styling classes
-    syntax += `
-    classDef person fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef organization fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef group fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
-    `;
-    
-    // Apply classes to nodes
-    nodes.forEach(node => {
-      if (node.type) {
-        syntax += `class ${node.id} ${node.type}\n`;
-      }
-    });
-    
-    return syntax;
-  };
+
 
   const getNodeStyle = (type?: string): string => {
     switch (type) {

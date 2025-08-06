@@ -3,10 +3,10 @@ import { INITIAL_AGENT_SOURCE, UploadWallpaperResponse } from '../../config';
 import { string_agent_source, validateAgentSource } from '../../types/string_agent_source';
 import { classNames } from '../../utils/classNames';
 import { spaceTrim } from '../../utils/spaceTrim';
-import { Modal } from '../Modal/Modal';
 import { AgentBookmark } from '../AgentBookmark/AgentBookmark';
 import { AgentForm } from '../AgentForm/AgentForm';
 import { AgentInstructions } from '../AgentInstructions/AgentInstructions';
+import { Modal } from '../Modal/Modal';
 import styles from './AgentBookEditor.module.css';
 
 export interface AgentBookEditorProps {
@@ -329,7 +329,7 @@ export function AgentBookEditor({
         }
 
         // Then upload files and update with URLs
-        let processedFileIndex = 0;
+        // let processedFileIndex = 0;
         for (const file of filesToProcess) {
             try {
                 const formData = new FormData();
@@ -365,7 +365,7 @@ export function AgentBookEditor({
                 console.error('Failed to upload knowledge source:', error);
                 throw error;
             }
-            processedFileIndex++;
+            // processedFileIndex++;
         }
     }, []);
 
@@ -422,9 +422,7 @@ export function AgentBookEditor({
                     />
 
                     <AgentInstructions
-                        singularCapitalized={abTestText.singularCapitalized}
-                        singular={abTestText.singular}
-                        mode={mode}
+
                         className={classNames(styles.rightPage, rightPageClassName)}
                         rightPageLinesClassName={styles.rightPageLines}
                     />

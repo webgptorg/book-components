@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { 
-  AgentBookEditor, 
-  validateAgentSource, 
+import { useState } from 'react';
+import {
+  AgentBookEditor,
   INITIAL_AGENT_SOURCE,
   type AgentBookEditorProps,
-  type string_agent_source 
+  type string_agent_source
 } from './src/index';
 
 /**

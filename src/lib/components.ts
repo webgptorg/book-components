@@ -13,10 +13,14 @@ export interface ComponentMetadata {
   dependencies: Record<string, string>;
   props: Record<string, {
     type: string;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     default?: any;
     description: string;
     required?: boolean;
   }>;
+
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   types?: Record<string, any>;
   features: string[];
   examples: Array<{
