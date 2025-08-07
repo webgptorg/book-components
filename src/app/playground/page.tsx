@@ -1,9 +1,9 @@
-import TextareaWithCounter from '@/components/textarea-with-counter/TextareaWithCounter';
+import BookEditor from '@/components/book-editor/BookEditor';
 
 export default function PlaygroundPage() {
     return (
         <div>
-            <TextareaWithCounter placeholder="Start typing..." maxLength={500} rows={4} className="mb-4" />
+            <BookEditor placeholder="Start writing your book..." rows={8} className="mb-4" />
         </div>
     );
 }
