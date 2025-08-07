@@ -1,8 +1,9 @@
-import React from 'react';
+'use client';
+
+import { classNames } from '../../utils/classNames';
 import { CancelIcon } from '../icons/CancelIcon';
 import { SendIcon } from '../icons/SendIcon';
 import { UploadIcon } from '../icons/UploadIcon';
-import { classNames } from '../../utils/classNames';
 import styles from './AgentBookmark.module.css';
 
 interface AgentBookmarkProps {

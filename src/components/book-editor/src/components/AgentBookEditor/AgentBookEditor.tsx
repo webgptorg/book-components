@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { INITIAL_AGENT_SOURCE, UploadWallpaperResponse } from '../../config';
 import { string_agent_source, validateAgentSource } from '../../types/string_agent_source';
@@ -422,7 +424,6 @@ export function AgentBookEditor({
                     />
 
                     <AgentInstructions
-
                         className={classNames(styles.rightPage, rightPageClassName)}
                         rightPageLinesClassName={styles.rightPageLines}
                     />

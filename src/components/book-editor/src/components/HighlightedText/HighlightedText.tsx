@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useMemo } from 'react';
 import { getAllCommitmentTypes } from '../../book/commitments';
 import { createCommitmentTypeRegex } from '../../book/commitments/createCommitmentRegex';

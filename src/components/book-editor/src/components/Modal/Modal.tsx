@@ -1,4 +1,6 @@
-import React, { ReactNode, useEffect } from 'react';
+'use client';
+
+import { ReactNode, useEffect } from 'react';
 import { classNames } from '../../utils/classNames';
 import styles from './Modal.module.css';
 

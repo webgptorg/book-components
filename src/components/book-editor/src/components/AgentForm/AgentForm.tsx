@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Promisable } from 'type-fest';
 import { string_agent_source, validateAgentSource } from '../../types/string_agent_source';
