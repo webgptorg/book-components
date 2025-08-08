@@ -2,6 +2,7 @@
 
 import { Package } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import BookEditorPreview from './book-editor/BookEditorPreview';
 
 // Dynamically import components to avoid SSR issues
 const TextareaWithCounter = dynamic(() => import('@/components/textarea-with-counter/TextareaWithCounter'), {
@@ -52,7 +53,7 @@ export default function ComponentPreview({ componentId }: ComponentPreviewProps)
             case 'book-editor':
                 return (
                     <div className="p-6">
-                        <BookEditor />
+                        <BookEditorPreview />
                     </div>
                 );
 
