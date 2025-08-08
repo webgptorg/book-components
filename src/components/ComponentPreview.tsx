@@ -2,7 +2,6 @@
 
 import { Package } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import BookEditorPreview from './book-editor/BookEditorPreview';
 
 // Dynamically import components to avoid SSR issues
 const TextareaWithCounter = dynamic(() => import('@/components/textarea-with-counter/TextareaWithCounter'), {
@@ -11,7 +10,7 @@ const TextareaWithCounter = dynamic(() => import('@/components/textarea-with-cou
 const MermaidSocialGraph = dynamic(() => import('@/components/mermaid-social-graph/MermaidSocialGraph'), {
     ssr: false,
 });
-const BookEditor = dynamic(() => import('@/components/book-editor/BookEditor'), {
+const BookEditorPreview = dynamic(() => import('@/components/book-editor/BookEditorPreview'), {
     ssr: false,
 });
 
