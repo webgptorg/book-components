@@ -1,22 +1,29 @@
 'use client';
 
+import type { PipelineString } from '@promptbook/types';
 import React, { useCallback, useState } from 'react';
 
 interface BookEditorProps {
-    placeholder?: string;
-    rows?: number;
+    /**
+     * Additional CSS classes to apply to the textarea.
+     *
+     * Note: Not using `string_css_class` from `@promptbook/types` because its logic is not connected anyway with the Promptbook
+     */
     className?: string;
-    value?: string;
-    onChange?: (value: string) => void;
+
+    /**
+     * The book which is being edited.
+     */
+    value?: PipelineString;
+
+    /**
+     * Callback function to handle changes in the book content.
+     */
+    onChange?: (value: PipelineString) => void;
 }
 
-export default function BookEditor({
-    placeholder = 'Start writing your book...',
-    rows = 6,
-    className = '',
-    value: controlledValue,
-    onChange,
-}: BookEditorProps) {
+export default function BookEditor(props: BookEditorProps) {
+    const { className = '', value: controlledValue, onChange } = props;
     const [internalValue, setInternalValue] = useState('');
 
     const value = controlledValue !== undefined ? controlledValue : internalValue;
