@@ -9,31 +9,22 @@
     "repository": "https://github.com/webgptorg/promptbook-components",
     "dependencies": {
         "react": "^18.0.0 || ^19.0.0",
-        "tailwindcss": "^3.0.0 || ^4.0.0"
+        "tailwindcss": "^3.0.0 || ^4.0.0",
+        "@promptbook/types": "^0.x.x"
     },
     "props": {
-        "placeholder": {
-            "type": "string",
-            "default": "Start writing your book...",
-            "description": "Placeholder text for the textarea"
-        },
-        "rows": {
-            "type": "number",
-            "default": 6,
-            "description": "Number of visible text lines"
-        },
         "className": {
             "type": "string",
             "default": "",
-            "description": "Additional CSS classes"
+            "description": "Additional CSS classes to apply to the textarea"
         },
         "value": {
-            "type": "string",
-            "description": "Controlled value (optional)"
+            "type": "PipelineString",
+            "description": "The book which is being edited (controlled value)"
         },
         "onChange": {
-            "type": "(value: string) => void",
-            "description": "Callback when value changes (for controlled mode)"
+            "type": "(value: PipelineString) => void",
+            "description": "Callback function to handle changes in the book content"
         }
     },
     "features": [
@@ -46,11 +37,11 @@
     "examples": [
         {
             "title": "Basic Usage",
-            "code": "<BookEditor placeholder=\"Start writing your story...\" />"
+            "code": "<BookEditor />"
         },
         {
-            "title": "With Custom Rows",
-            "code": "<BookEditor rows={10} placeholder=\"Chapter 1...\" />"
+            "title": "With Custom CSS Classes",
+            "code": "<BookEditor className=\"border-2 border-blue-500\" />"
         },
         {
             "title": "Controlled Mode",

@@ -10,6 +10,9 @@ const TextareaWithCounter = dynamic(() => import('@/components/textarea-with-cou
 const MermaidSocialGraph = dynamic(() => import('@/components/mermaid-social-graph/MermaidSocialGraph'), {
     ssr: false,
 });
+const BookEditor = dynamic(() => import('@/components/book-editor/BookEditor'), {
+    ssr: false,
+});
 
 interface ComponentPreviewProps {
     componentId: string;
@@ -49,11 +52,7 @@ export default function ComponentPreview({ componentId }: ComponentPreviewProps)
             case 'book-editor':
                 return (
                     <div className="p-6">
-                        <textarea
-                            placeholder="Start writing your book..."
-                            rows={8}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all duration-200 text-gray-900 placeholder-gray-500"
-                        />
+                        <BookEditor />
                     </div>
                 );
 
