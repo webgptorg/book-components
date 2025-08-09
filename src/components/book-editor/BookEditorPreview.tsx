@@ -27,9 +27,9 @@ export default function BookEditorPreview() {
             <h2 className="text-lg font-semibold mt-6 mb-2">Commitment Definitions</h2>
             <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
                 <code>
-                    {getAllCommitmentDefinitions().map(({ type }) => (
+                    {getAllCommitmentDefinitions().map(({ type, description }) => (
                         <React.Fragment key={type}>
-                            {type}
+                            {type}: {description}
                             <br />
                         </React.Fragment>
                     ))}
