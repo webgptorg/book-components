@@ -20,11 +20,13 @@ Enhance component `BookEditor`, it should have design and UI according provided 
 
 ---
 
-[ ]
+[x]
 
 In component `BookEditor` cursor is not aligned with the text.
 
 -   This happen only on some lines, for example on "PERSONA A friendly AI assistant that helps you with your tasks"
+-   Its probbly because of the highlighted keywords, they are not aligned with the text.
+-   The cursor should be aligned with the text both in the keyword and in the rest of the text.
 
 Fix this issue.
 

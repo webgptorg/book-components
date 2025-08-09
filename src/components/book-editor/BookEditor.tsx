@@ -100,7 +100,7 @@ export default function BookEditor(props: BookEditorProps) {
         text.replace(r, (match, ...args) => {
             const index = args[args.length - 2] as number; // offset
             out += escapeHtml(text.slice(lastIndex, index));
-            out += `<span class="text-indigo-700 font-semibold">${escapeHtml(match)}</span>`;
+            out += `<span class="text-indigo-700">${escapeHtml(match)}</span>`;
             lastIndex = index + match.length;
             return match;
         });
