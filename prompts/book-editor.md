@@ -6,7 +6,7 @@ This component should be named `book-editor` `<BookEditor />` and should be used
 
 ---
 
-[ ]
+[x]
 
 Enhance component `BookEditor`, it should have design and UI according provided screenshot.
 
@@ -16,5 +16,61 @@ Enhance component `BookEditor`, it should have design and UI according provided 
 -   To get the highlighted keywords, you can use the `getAllCommitmentDefinitions` `createTypeRegex` from `@promptbook/core`.
 -   Make design in Tailwind CSS
 
-
 ![alt text](screenshots/book-editor.png)
+
+---
+
+[ ]
+
+In component `BookEditor` cursor is not aligned with the text.
+
+-   This happen only on some lines, for example on "PERSONA A friendly AI assistant that helps you with your tasks"
+
+Fix this issue.
+
+---
+
+[ ]
+
+In component `BookEditor` lines on background should be in sync and scrolled with text.
+
+---
+
+[ ]
+
+Implement intellisense in `BookEditor` component.
+
+-   Use the `getAllCommitmentDefinitions` from `@promptbook/core` to get the definitions.
+
+---
+
+[ ]
+
+Implement hover on highlited commitment in `BookEditor`
+
+-   It should be part of the intellisense
+-   When you hover on the highlighted commitment, it should show the description of the commitment
+-   The description are in markdown and should be rendered as HTML
+-   Use the `description` from `getAllCommitmentDefinitions` from `@promptbook/core` to get the definitions.
+
+---
+
+[ ]
+
+The "Commitment Definitions" in `BookEditorPreview` are messed up, they should be displayed in some better way.
+
+-   The purpose of this section is to show the manual for `BookEditor`
+-   Descriptions are in markdown format, so they should be rendered as HTML
+-   You should be able to navigate through the definitions and see the description of each definition
+
+---
+
+[ ]
+
+Move the middle vertical line to the left side of the text area in `BookEditor`.
+
+-   It should be 30px from the left side of the left border
+-   Text in the text area should be indented by this line
+-   On the right side of the text area, there should be the indent but no line
+-   It should remind the lined notebook paper design
+-   The line should have slight blue color
