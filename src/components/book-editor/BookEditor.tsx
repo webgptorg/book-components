@@ -164,8 +164,7 @@ export default function BookEditor(props: BookEditorProps) {
                     // 1) center fold line
                     // 2) horizontal repeating lines (lined paper)
                     style={{
-                        backgroundImage:
-                            'linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(0,0,0,0.10) calc(50% - 0.5px), rgba(0,0,0,0.10) calc(50% + 0.5px), transparent calc(50% + 0.5px))',
+                        backgroundImage: 'none',
                     }}
                 />
 
@@ -178,16 +177,17 @@ export default function BookEditor(props: BookEditorProps) {
                         'whitespace-pre-wrap',
                         'text-gray-900',
                         'text-lg md:text-xl',
-                        'p-6 md:p-8',
+                        'py-6 md:py-8',
+                        'pl-[46px] pr-[46px]',
                         // Ensure highlighted text sits below the textarea but remains visible
                         'z-10',
                     ].join(' ')}
                     style={{
                         lineHeight: `${lineHeight}px`,
-                        backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent calc(${lineHeight}px - 1px), rgba(0,0,0,0.06) ${lineHeight}px)`,
+                        backgroundImage: `linear-gradient(90deg, transparent 30px, rgba(59,130,246,0.3) 30px, rgba(59,130,246,0.3) 31px, transparent 31px), repeating-linear-gradient(0deg, transparent, transparent calc(${lineHeight}px - 1px), rgba(0,0,0,0.06) ${lineHeight}px)`,
                         backgroundAttachment: 'local',
-                        backgroundOrigin: 'content-box',
-                        backgroundClip: 'content-box',
+                        backgroundOrigin: 'padding-box, content-box',
+                        backgroundClip: 'padding-box, content-box',
                         overflowWrap: 'break-word',
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none',
@@ -211,7 +211,8 @@ export default function BookEditor(props: BookEditorProps) {
                         libreBaskerville.className,
                         // Layout and visuals
                         'bg-transparent outline-none resize-none',
-                        'p-6 md:p-8',
+                        'py-6 md:py-8',
+                        'pl-[46px] pr-[46px]',
                     ].join(' ')}
                     style={{ lineHeight: `${lineHeight}px` }}
                     spellCheck={false}

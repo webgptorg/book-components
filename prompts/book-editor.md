@@ -77,7 +77,7 @@ The "Commitment Definitions" in `BookEditorPreview` are messed up, they should b
 
 ---
 
-[ ]
+[x]
 
 Move the middle vertical line to the left side of the text area in `BookEditor`.
 
