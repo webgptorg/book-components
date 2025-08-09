@@ -32,7 +32,7 @@ Fix this issue.
 
 ---
 
-[ ]
+[x]
 
 In component `BookEditor` lines on background should be in sync and scrolled with text.
 

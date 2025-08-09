@@ -127,8 +127,7 @@ export default function BookEditor(props: BookEditorProps) {
                     // 2) horizontal repeating lines (lined paper)
                     style={{
                         backgroundImage:
-                            'linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(0,0,0,0.10) calc(50% - 0.5px), rgba(0,0,0,0.10) calc(50% + 0.5px), transparent calc(50% + 0.5px)),' +
-                            'repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0,0,0,0.06) 32px)',
+                            'linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(0,0,0,0.10) calc(50% - 0.5px), rgba(0,0,0,0.10) calc(50% + 0.5px), transparent calc(50% + 0.5px))',
                     }}
                 />
 
@@ -145,6 +144,15 @@ export default function BookEditor(props: BookEditorProps) {
                         // Ensure highlighted text sits below the textarea but remains visible
                         'z-10',
                     ].join(' ')}
+                    style={{
+                        backgroundImage:
+                            'repeating-linear-gradient(0deg, transparent, transparent calc(2rem - 1px), rgba(0,0,0,0.06) 2rem)',
+                        backgroundAttachment: 'local',
+                        backgroundOrigin: 'content-box',
+                        backgroundClip: 'content-box',
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none',
+                    }}
                     dangerouslySetInnerHTML={{ __html: highlightedHtml }}
                 />
 
