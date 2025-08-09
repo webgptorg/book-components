@@ -38,7 +38,7 @@ In component `BookEditor` lines on background should be in sync and scrolled wit
 
 ---
 
-[ ]
+[x]
 
 In component `BookEditor` lines on background should be always aligned with the text.
 
@@ -63,7 +63,7 @@ Implement hover on highlited commitment in `BookEditor`
 -   It should be part of the intellisense
 -   When you hover on the highlighted commitment, it should show the description of the commitment
 -   The description are in markdown and should be rendered as HTML
--   Use the `description` from `getAllCommitmentDefinitions` from `@promptbook/core` to get the definitions.
+-   Use the `description` and `documentation` from `getAllCommitmentDefinitions` from `@promptbook/core` to get the definitions.
 
 ---
 

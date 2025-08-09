@@ -3,7 +3,7 @@
 import { DEFAULT_BOOK, getAllCommitmentDefinitions, validateBook } from '@promptbook/core';
 import type { string_book } from '@promptbook/types';
 import { Libre_Baskerville } from 'next/font/google';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 const libreBaskerville = Libre_Baskerville({
     subsets: ['latin'],
@@ -62,6 +62,8 @@ export default function BookEditor(props: BookEditorProps) {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const highlightRef = useRef<HTMLPreElement>(null);
 
+    const [lineHeight, setLineHeight] = useState<number>(32);
+
     const handleChange = useCallback(
         (event: React.ChangeEvent<HTMLTextAreaElement>) => {
             const newValue = event.target.value;
@@ -80,6 +82,42 @@ export default function BookEditor(props: BookEditorProps) {
             highlightRef.current.scrollTop = t.scrollTop;
             highlightRef.current.scrollLeft = t.scrollLeft;
         }
+    }, []);
+
+    useEffect(() => {
+        const el = textareaRef.current;
+        if (!el) return;
+
+        const measure = () => {
+            const cs = window.getComputedStyle(el);
+            const lh = parseFloat(cs.lineHeight || '0');
+            if (!Number.isNaN(lh) && lh > 0) {
+                setLineHeight(lh);
+            }
+        };
+
+        // Initial measure
+        measure();
+
+        // Re-measure after fonts load (metrics can change once font renders)
+        const fontsReady: Promise<unknown> | undefined = (document as Document & {
+            fonts?: { ready?: Promise<unknown> };
+        }).fonts?.ready;
+        if (fontsReady && typeof (fontsReady as Promise<unknown>).then === 'function') {
+            fontsReady
+                .then(() => {
+                    measure();
+                })
+                .catch(() => {
+                    /* ignore */
+                });
+        }
+
+        // Re-measure on resize
+        window.addEventListener('resize', measure);
+        return () => {
+            window.removeEventListener('resize', measure);
+        };
     }, []);
 
     // Build the regex for commitment types using @promptbook/core
@@ -137,19 +175,20 @@ export default function BookEditor(props: BookEditorProps) {
                     aria-hidden
                     className={[
                         'absolute inset-0 overflow-auto pointer-events-none',
-                        'whitespace-pre-wrap break-words',
+                        'whitespace-pre-wrap',
                         'text-gray-900',
-                        'text-lg md:text-xl leading-8',
+                        'text-lg md:text-xl',
                         'p-6 md:p-8',
                         // Ensure highlighted text sits below the textarea but remains visible
                         'z-10',
                     ].join(' ')}
                     style={{
-                        backgroundImage:
-                            'repeating-linear-gradient(0deg, transparent, transparent calc(2rem - 1px), rgba(0,0,0,0.06) 2rem)',
+                        lineHeight: `${lineHeight}px`,
+                        backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent calc(${lineHeight}px - 1px), rgba(0,0,0,0.06) ${lineHeight}px)`,
                         backgroundAttachment: 'local',
                         backgroundOrigin: 'content-box',
                         backgroundClip: 'content-box',
+                        overflowWrap: 'break-word',
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none',
                     }}
@@ -168,12 +207,13 @@ export default function BookEditor(props: BookEditorProps) {
                         'h-[28rem] md:h-[36rem]',
                         // Typography
                         'text-transparent caret-gray-900 selection:bg-indigo-200/60',
-                        'text-lg md:text-xl leading-8',
+                        'text-lg md:text-xl',
                         libreBaskerville.className,
                         // Layout and visuals
                         'bg-transparent outline-none resize-none',
                         'p-6 md:p-8',
                     ].join(' ')}
+                    style={{ lineHeight: `${lineHeight}px` }}
                     spellCheck={false}
                 />
             </div>
