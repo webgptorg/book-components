@@ -40,6 +40,16 @@ In component `BookEditor` lines on background should be in sync and scrolled wit
 
 [ ]
 
+In component `BookEditor` lines on background should be always aligned with the text.
+
+-   Be aware of highlighted keywords, they should not affect the alignment of the lines.
+-   Be aware of the line wraps
+-   It should look like a lined notebook paper design, where the lines are always aligned with the text, even when the text is wrapped or highlighted.
+
+---
+
+[ ]
+
 Implement intellisense in `BookEditor` component.
 
 -   Use the `getAllCommitmentDefinitions` from `@promptbook/core` to get the definitions.
