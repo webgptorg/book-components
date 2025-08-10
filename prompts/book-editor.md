@@ -67,7 +67,7 @@ Implement hover on highlited commitment in `BookEditor`
 
 ---
 
-[ ]
+[x]
 
 The "Commitment Definitions" in `BookEditorPreview` are messed up, they should be displayed in some better way.
 
