@@ -48,7 +48,7 @@ In component `BookEditor` lines on background should be always aligned with the 
 
 ---
 
-[ ]
+[x][ ]
 
 Implement intellisense in `BookEditor` component.
 
@@ -71,6 +71,7 @@ Implement hover on highlited commitment in `BookEditor`
 
 The "Commitment Definitions" in `BookEditorPreview` are messed up, they should be displayed in some better way.
 
+-   Use the `description` and `documentation` from `getAllCommitmentDefinitions`
 -   The purpose of this section is to show the manual for `BookEditor`
 -   Descriptions are in markdown format, so they should be rendered as HTML
 -   You should be able to navigate through the definitions and see the description of each definition
