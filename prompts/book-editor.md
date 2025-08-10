@@ -48,7 +48,7 @@ In component `BookEditor` lines on background should be always aligned with the 
 
 ---
 
-[ ]
+[x]
 
 Implement intellisense in `BookEditor` component.
 
