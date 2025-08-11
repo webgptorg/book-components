@@ -2,7 +2,7 @@
 
 import { DEFAULT_BOOK, getAllCommitmentDefinitions, parseAgentSource } from '@promptbook/core';
 import type { string_book } from '@promptbook/types';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import BookEditor from './BookEditor';
 
@@ -65,13 +65,49 @@ export default function BookEditorPreview() {
                                 {(() => {
                                     const doc = (selected as unknown as { documentation?: unknown })?.documentation;
                                     return typeof doc === 'string' && doc.trim() ? (
-                                        <div className="mt-1 text-sm text-gray-600 break-words">{doc}</div>
+                                        <div className="mt-3 p-3 rounded-r-lg">
+                                            <div style={{ display: 'none' }}>
+                                                <div className="text-xs uppercase text-blue-600 font-semibold tracking-wide mb-1">
+                                                    Documentation (raw markdown)
+                                                </div>
+                                                <pre>{doc}</pre>
+                                            </div>
+                                            <div>
+                                                <div className="text-xs uppercase text-blue-600 font-semibold tracking-wide mb-1">
+                                                    Documentation
+                                                </div>
+                                                <div className="text-sm text-blue-800 prose prose-sm prose-blue max-w-none">
+                                                    <ReactMarkdown
+                                                        components={{
+                                                            p: ({ children }) => (
+                                                                <p className="mb-2 last:mb-0">{children}</p>
+                                                            ),
+                                                            code: ({ children }) => (
+                                                                <code className="bg-blue-100 text-blue-900 px-1 py-0.5 rounded text-xs font-mono">
+                                                                    {children}
+                                                                </code>
+                                                            ),
+                                                            strong: ({ children }) => (
+                                                                <strong className="font-semibold text-blue-900">
+                                                                    {children}
+                                                                </strong>
+                                                            ),
+                                                            em: ({ children }) => (
+                                                                <em className="italic text-blue-700">{children}</em>
+                                                            ),
+                                                        }}
+                                                    >
+                                                        {doc}
+                                                    </ReactMarkdown>
+                                                </div>{' '}
+                                            </div>
+                                        </div>
                                     ) : null;
                                 })()}
                             </div>
 
                             {/* Description in Markdown */}
-                            <div className="text-gray-800">
+                            <div style={{ display: 'none' }} className="text-gray-800">
                                 <ReactMarkdown>
                                     {typeof selected.description === 'string'
                                         ? selected.description
