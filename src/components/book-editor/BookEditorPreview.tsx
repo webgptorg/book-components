@@ -79,6 +79,24 @@ export default function BookEditorPreview() {
                                                 <div className="text-sm text-blue-800 prose prose-sm prose-blue max-w-none">
                                                     <ReactMarkdown
                                                         components={{
+                                                            h1: ({ children }) => (
+                                                                <h1 className="text-2xl font-bold mb-3 text-blue-900">{children}</h1>
+                                                            ),
+                                                            h2: ({ children }) => (
+                                                                <h2 className="text-xl font-bold mb-2 text-blue-900">{children}</h2>
+                                                            ),
+                                                            h3: ({ children }) => (
+                                                                <h3 className="text-lg font-bold mb-2 text-blue-900">{children}</h3>
+                                                            ),
+                                                            h4: ({ children }) => (
+                                                                <h4 className="text-base font-bold mb-1 text-blue-900">{children}</h4>
+                                                            ),
+                                                            h5: ({ children }) => (
+                                                                <h5 className="text-sm font-bold mb-1 text-blue-900">{children}</h5>
+                                                            ),
+                                                            h6: ({ children }) => (
+                                                                <h6 className="text-xs font-bold mb-1 text-blue-900">{children}</h6>
+                                                            ),
                                                             p: ({ children }) => (
                                                                 <p className="mb-2 last:mb-0">{children}</p>
                                                             ),
@@ -108,7 +126,28 @@ export default function BookEditorPreview() {
 
                             {/* Description in Markdown */}
                             <div style={{ display: 'none' }} className="text-gray-800">
-                                <ReactMarkdown>
+                                <ReactMarkdown
+                                    components={{
+                                        h1: ({ children }) => (
+                                            <h1 className="text-2xl font-bold mb-3 text-gray-900">{children}</h1>
+                                        ),
+                                        h2: ({ children }) => (
+                                            <h2 className="text-xl font-bold mb-2 text-gray-900">{children}</h2>
+                                        ),
+                                        h3: ({ children }) => (
+                                            <h3 className="text-lg font-bold mb-2 text-gray-900">{children}</h3>
+                                        ),
+                                        h4: ({ children }) => (
+                                            <h4 className="text-base font-bold mb-1 text-gray-900">{children}</h4>
+                                        ),
+                                        h5: ({ children }) => (
+                                            <h5 className="text-sm font-bold mb-1 text-gray-900">{children}</h5>
+                                        ),
+                                        h6: ({ children }) => (
+                                            <h6 className="text-xs font-bold mb-1 text-gray-900">{children}</h6>
+                                        ),
+                                    }}
+                                >
                                     {typeof selected.description === 'string'
                                         ? selected.description
                                         : String(selected.description ?? '')}
