@@ -2,9 +2,9 @@
 
 import { DEFAULT_BOOK, getAllCommitmentDefinitions, parseAgentSource } from '@promptbook/core';
 import type { string_book } from '@promptbook/types';
+import { BookEditor } from '@promptbook/components';
 import { useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import BookEditor from './BookEditor';
 
 /**
  * Renders a preview of `<BookEditor />` component.
