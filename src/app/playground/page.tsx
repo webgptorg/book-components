@@ -1,10 +1,9 @@
-import { AgentBookEditor } from '@/components/book-editor';
+import ComponentPreview from '@/components/ComponentPreview';
 
 export default function PlaygroundPage() {
-
-  return (
-    <div>
-      <AgentBookEditor />
-    </div>
-  );
+    return (
+        <div>
+            <ComponentPreview componentId="book-editor" />
+        </div>
+    );
 }

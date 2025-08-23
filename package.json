@@ -3,7 +3,7 @@
     "version": "0.1.1",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbopack",
+        "dev": "npx kill-port 4022 && next dev -p 4022 --turbopack",
         "build": "next build",
         "start": "next start",
         "lint": "next lint"
@@ -12,34 +12,22 @@
         "lucide-react": "^0.536.0",
         "mermaid": "^11.9.0",
         "next": "15.4.5",
+        "ptbk": "0.100.0-24",
         "react": "19.1.0",
-        "react-dom": "19.1.0"
+        "react-dom": "19.1.0",
+        "react-markdown": "^10.1.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
-        "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
-        "eslint": "^9",
+        "autoprefixer": "^10.4.14",
+        "eslint": "^8.57.0",
         "eslint-config-next": "15.4.5",
-        "tailwindcss": "^4",
-        "typescript": "^5"
-    },
-    "license": "Apache-2.0",
-    "funding": [
-        {
-            "type": "individual",
-            "url": "https://buymeacoffee.com/hejny"
-        },
-        {
-            "type": "github",
-            "url": "https://github.com/webgptorg/book-components/blob/main/README.md#%EF%B8%8F-contributing"
-        }
-    ],
-    "description": "A curated gallery of React components for developers, showcasing high-quality, self-contained components built with Tailwind CSS and designed for the Promptbook ecosystem.",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/webgptorg/book-components"
+        "postcss": "^8.4.24",
+        "tailwindcss": "^3.4.0",
+        "type-fest": "^4.41.0",
+        "typescript": "^5.4.5"
     }
 }
